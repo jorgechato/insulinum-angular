@@ -1,0 +1,124 @@
+a
+  color: maincolour;
+  text-decoration: none;
+  cursor: pointer;
+
+body
+    font-family 'Open Sans', "Helvetica Neue",Helvetica,Arial,sans-serif
+    font-size 16px
+    font-weight: 400;
+    color: igrey;
+
+header
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+    height: 40px;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 5px rgba(0,0,0,.12);
+
+header.transparent
+    background transparent
+    box-shadow none
+
+header.transparent .nav-buttons a.active .icon
+    opacity: 1;
+    // filter: alpha(Opacity=100);
+    color: #fff;
+
+header .nav-buttons a.active .index
+    color: iblack;
+
+header.transparent .nav-buttons .icon
+    color: #fff;
+    opacity: .5;
+    // filter: alpha(Opacity=50);
+
+header .nav-buttons a.active button
+    opacity: 1;
+    // filter: alpha(Opacity=100);
+
+header .nav-buttons .icon
+    margin-right: 20px;
+    opacity: .3;
+    // filter: alpha(Opacity=30);
+    width: 20px;
+    height: 40px;
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #000;
+
+button.icon
+    color: #fff;
+
+button.clear
+    background: 0 0;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+
+button
+    background: rgba(maincolour,.2);
+    color: maincolour;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 23px;
+    border: 0;
+    letter-spacing: .04em;
+    cursor: pointer;
+    outline: 0;
+    &:hover
+        color white
+        background maincolour
+
+button.small
+    padding: 5px 10px 4px;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .029em;
+    line-height: 16px;
+    border-radius: 14px;
+
+.get-app-button.transparent, .login-link.transparent
+    background-color: #fff;
+    color: igrey;
+
+.get-app-button, .login-link
+    position: fixed;
+    right: 82px;
+    top: 8px;
+    z-index: 9999;
+
+.login-link
+    right: 15px;
+
+#outer-wrapper
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 100%;
+    padding-top: 60px;
+    background-color: iwhite;
+
+#outer-wrapper.mobile header
+    background-color: maincolour;
+    height: 45px;
+    box-shadow: none;
+
+header .nav-buttons
+    position: absolute;
+    top: 0;
+    left: 20px;
+
+// #outer-wrapper:not(.mobile)
+//     min-width: 535px;

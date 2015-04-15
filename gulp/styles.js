@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
+var nib = require('nib');
 
 var $ = require('gulp-load-plugins')();
 
@@ -40,7 +41,7 @@ module.exports = function(options) {
       .pipe(wiredep(options.wiredep))
       .pipe(vendorFilter.restore())
       .pipe($.sourcemaps.init())
-      .pipe($.stylus()).on('error', options.errorHandler('Stylus'))
+      .pipe($.stylus({use:nib()})).on('error', options.errorHandler('Stylus'))
       .pipe($.autoprefixer()).on('error', options.errorHandler('Autoprefixer'))
       .pipe($.sourcemaps.write())
       .pipe(gulp.dest(options.tmp + '/serve/app/'))
