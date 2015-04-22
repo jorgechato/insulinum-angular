@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="insulinum">
   <head>
     <meta charset="utf-8">
     <title>Insulinum</title>
@@ -25,7 +25,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div id="outer-wrapper" class="">
+    <div id="outer-wrapper" class=""  ng-controller="mainController">
         <header class="">
             <div class="nav-buttons ">
                 <span>
@@ -58,15 +58,15 @@
                         <h2>Jorge Chato</h2>
                         <div class="metrics">
                             <div class="controls">
-                                <div class="metrics-count">1,547</div>
+                                <div class="metrics-count">{{controlsLength | number}}</div>
                                 <div class="metrics-name">Controls</div>
                             </div>
                             <div class="week">
-                                <div class="metrics-count">62</div>
+                                <div class="metrics-count">{{avgWeek}}</div>
                                 <div class="metrics-name">Week</div>
                             </div>
                             <div class="month">
-                                <div class="metrics-count">45</div>
+                                <div class="metrics-count">{{avgMonth}}</div>
                                 <div class="metrics-name">Month</div>
                             </div>
                         </div>
@@ -80,16 +80,16 @@
             <div class="user-data">
                 <div class="data">
                     <div class="data-center">
-                        <div class="post">
+                        <div class="post" ng-repeat="card in chartCard">
                             <div class="card">
                                 <div class="card-header">
-
+                                    <h4>Month chart <span> {{ card.time | date:'HH:mm:ss'}} - {{ card.date | date:'dd MMMM yyyy'}}</span></h4>
                                 </div>
                                 <div class="graphic">
 
                                 </div>
                                 <div class="card-content">
-
+                                    {{card.note}}
                                 </div>
                             </div>
                         </div>
