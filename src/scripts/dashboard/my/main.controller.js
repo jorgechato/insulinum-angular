@@ -2,7 +2,7 @@
 
 angular.module('insulinum')
 .controller('mainController', function ($scope) {
-    $scope.chartCard = [
+    $scope.controlsAPI = [
         {
             'date' : new Date(),
             'time' : new Date(),
@@ -32,16 +32,16 @@ angular.module('insulinum')
         }
     ];
 
-    $scope.controlsLength = $scope.chartCard.length;
+    $scope.controlsLength = $scope.controlsAPI.length;
 
     function avg(){
         var total = 0;
-        angular.forEach($scope.chartCard, function(control) {
+        angular.forEach($scope.controlsAPI, function(control) {
             // if(control.date == )
                 total += control.glucose;
         });
 
-        return total/$scope.chartCard.length;
+        return total/$scope.controlsAPI.length;
     }
 
     $scope.avgWeek = avg();

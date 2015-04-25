@@ -77,16 +77,19 @@
                 <div class="padding"></div>
             </div>
 
-            <div class="user-data">
+            <div class="user-data" ng-controller="cardController">
                 <div class="data">
                     <div class="data-center">
                         <div class="post" ng-repeat="card in chartCard">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Month chart <span> {{ card.time | date:'HH:mm:ss'}} - {{ card.date | date:'dd MMMM yyyy'}}</span></h4>
+                                    <h4>{{card.name}} <span> {{ card.time | date:'HH:mm:ss'}} - {{ card.date | date:'dd MMMM yyyy'}}</span></h4>
                                 </div>
                                 <div class="graphic">
-
+                                    <canvas id="{{card.id}}" class="chart chart-bar" data="data"
+                                      labels="labels" legend="true" series="series"
+                                      click="onClick">
+                                    </canvas>
                                 </div>
                                 <div class="card-content">
                                     {{card.note}}
