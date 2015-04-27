@@ -8,3 +8,7 @@ $(document).on('ready',function(){
 $(window).on('load',function(){
     NProgress.done();
 });
+
+// $(window).on('load',function(){
+//     $( "#bar" ).removeClass( "chart-line" ).addClass( "chart-bar" );
+// });

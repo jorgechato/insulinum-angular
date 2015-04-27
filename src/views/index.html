@@ -25,7 +25,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div id="outer-wrapper" class=""  ng-controller="mainController">
+    <div id="outer-wrapper" class=""  ng-controller="mainController as main">
         <header class="">
             <div class="nav-buttons ">
                 <span>
@@ -70,29 +70,48 @@
                                 <div class="metrics-name">Month</div>
                             </div>
                         </div>
-                        <button class="control-button-large control">Controls</button>
+                        <button class="control-button-large control" ng-click="toggleCustom()">{{switchControlChart}}</button>
                     </div>
                 </div>
                 <div class="data-with"></div>
                 <div class="padding"></div>
             </div>
 
-            <div class="user-data" ng-controller="cardController">
+            <div class="user-data">
                 <div class="data">
                     <div class="data-center">
-                        <div class="post" ng-repeat="card in chartCard">
+                        <div class="post" ng-repeat="card in chartCard" ng-show="switchButton">
                             <div class="card">
                                 <div class="card-header">
                                     <h4>{{card.name}} <span> {{ card.time | date:'HH:mm:ss'}} - {{ card.date | date:'dd MMMM yyyy'}}</span></h4>
                                 </div>
                                 <div class="graphic">
-                                    <canvas id="{{card.id}}" class="chart chart-bar" data="data"
+                                    <canvas id="{{card.id}}" class="chart-line chart" data="data"
                                       labels="labels" legend="true" series="series"
                                       click="onClick">
                                     </canvas>
                                 </div>
                                 <div class="card-content">
-                                    {{card.note}}
+                                    <p ng-bind-html="card.note | tweetLinky:'_blank'"></p>
+                                    <form class="comment-your-control">
+                                        <input type="text" name="comment" maxlength="140" placeholder="Jorge say something about your control">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post" ng-repeat="control in controlsAPI" ng-show="!switchButton">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>{{control.daytime | capitalize}} <span> {{ control.time | date:'HH:mm:ss'}} - {{ control.date | date:'dd MMMM yyyy'}}</span></h4>
+                                </div>
+                                <div class="graphic controls">
+                                    {{control.glucose}}-{{control.type}}-{{control.insulin}}
+                                </div>
+                                <div class="card-content">
+                                    <p ng-bind-html="control.note | tweetLinky:'_blank'"></p>
+                                    <form class="comment-your-control">
+                                        <input type="text" name="comment" maxlength="140" placeholder="Jorge say something about your control">
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('insulinum', ['chart.js']);
+angular.module('insulinum', ['chart.js','ngSanitize']);
