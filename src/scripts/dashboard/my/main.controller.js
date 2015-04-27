@@ -65,7 +65,7 @@ angular.module('insulinum')
             'name':'Linear chart',
             'date' : new Date(),
             'time' : new Date(),
-            'note' : 'something that happen in this control is everything I whant #EverythingOK'
+            'note' : 'something that happen <3 in this control is everything I whant #EverythingOK'
         },
         {
             'id':'bar',
@@ -73,7 +73,7 @@ angular.module('insulinum')
             'name':'Bar chart',
             'date' : new Date(),
             'time' : new Date(),
-            'note' : 'something that happen in this control is everything I whant #EverythingOK'
+            'note' : 'something that happen in :P this control is everything I whant #EverythingOK'
         },
         {
             'id':'radar',
