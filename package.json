@@ -2,7 +2,7 @@
   "name": "insulinum-angular",
   "version": "1.0.0",
   "description": "forntend of insulinum build in angularjs + jade and the power of gulp",
-  "main": "gulpfile.js",
+  "main": "index.js",
   "scripts": {
     "test": "gulp test"
   },
