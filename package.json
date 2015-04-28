@@ -61,5 +61,9 @@
     "uglify-save-license": "^0.4.1",
     "wiredep": "^2.2.2",
     "wrench": "^1.5.8"
+  },
+  "dependencies": {
+    "express": "^4.12.3",
+    "gzippo": "^0.2.0"
   }
 }
