@@ -1,5 +1,8 @@
 node_modules/
 bower_components/
 .tmp/
-dist/
+e2e/
+gulp/
+src/
+gulpfile.js
 .DS_Store
