@@ -86,7 +86,7 @@
                                     <h4 ng-cloak>{{card.name}} <span> {{ card.time | date:'HH:mm:ss'}} - {{ card.date | date:'dd MMMM yyyy'}}</span></h4>
                                 </div>
                                 <div class="graphic">
-                                    <canvas ng-cloak id="{{card.id}}" class="{{card.class}} chart" ng-class="{{card.class}}" data="data"
+                                    <canvas ng-cloak id="{{card.id}}" class="chart-bar chart" ng-class="{{card.class}}" data="data"
                                       labels="labels" legend="true" series="series"
                                       click="onClick">
                                     </canvas>
