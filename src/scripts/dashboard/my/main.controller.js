@@ -52,7 +52,7 @@ angular.module('insulinum')
 
     $scope.$watch('switchButton', function(){
         $scope.switchControlChart = $scope.switchButton ? 'Controls' : 'Charts';
-    })
+    });
 
     $scope.toggleCustom = function() {
         $scope.switchButton = $scope.switchButton === false ? true: false;

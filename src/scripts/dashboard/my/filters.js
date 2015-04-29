@@ -3,11 +3,11 @@
 angular.module('insulinum')
 .filter('capitalize', function() {
     return function(input, scope) {
-        if (input!=null){
+        if (input!==null){
             input = input.toLowerCase();
         }
         return input.substring(0,1).toUpperCase()+input.substring(1);
-    }
+    };
 });
 
 angular.module('insulinum')
@@ -17,7 +17,7 @@ angular.module('insulinum')
             if (!text) return text;
 
             var replacedText = $filter('linky')(text, target);
-            var targetAttr = "";
+            var targetAttr = '';
             if (angular.isDefined(target)) {
                 targetAttr = ' target="' + target + '"';
             }

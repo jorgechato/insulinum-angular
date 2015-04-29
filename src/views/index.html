@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="insulinum">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Insulinum</title>
@@ -20,7 +20,7 @@
     <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body>
+  <body ng-app="insulinum">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -86,7 +86,7 @@
                                     <h4 ng-cloak>{{card.name}} <span> {{ card.time | date:'HH:mm:ss'}} - {{ card.date | date:'dd MMMM yyyy'}}</span></h4>
                                 </div>
                                 <div class="graphic">
-                                    <canvas id="{{card.id}}" class="chart-line chart" data="data"
+                                    <canvas ng-cloak id="{{card.id}}" class="{{card.class}} chart" ng-class="{{card.class}}" data="data"
                                       labels="labels" legend="true" series="series"
                                       click="onClick">
                                     </canvas>
