@@ -61,13 +61,17 @@
                                 <div class="metrics-count" ng-bind="controlsLength | number"></div>
                                 <div class="metrics-name">Controls</div>
                             </div>
+                            <div class="day">
+                                <div class="metrics-count" ng-bind="avgWeek"></div>
+                                <div class="metrics-name">AVG Day</div>
+                            </div>
                             <div class="week">
                                 <div class="metrics-count" ng-bind="avgWeek"></div>
-                                <div class="metrics-name">Week</div>
+                                <div class="metrics-name">AVG Week</div>
                             </div>
                             <div class="month">
                                 <div class="metrics-count" ng-bind="avgMonth"></div>
-                                <div class="metrics-name">Month</div>
+                                <div class="metrics-name">AVG Month</div>
                             </div>
                         </div>
                         <button class="control-button-large control" ng-click="toggleCustom()" ng-bind="switchControlChart"></button>
@@ -83,7 +87,7 @@
                         <div class="post" ng-repeat="card in chartCard" ng-show="switchButton">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 ng-cloak>{{card.name}} <span> {{ card.time | date:'HH:mm:ss'}} - {{ card.date | date:'dd MMMM yyyy'}}</span></h4>
+                                    <h4 ng-bind="card.name "> </h4> <span ng-bind=" card.time | date:' HH:mm:ss'"></span> <span ng-bind="card.date | date:' - dd MMMM yyyy'"></span>
                                 </div>
                                 <div class="graphic">
                                     <canvas ng-cloak id="{{card.id}}" class="chart-bar chart" ng-class="{{card.class}}" data="data"
@@ -92,7 +96,7 @@
                                     </canvas>
                                 </div>
                                 <div class="card-content">
-                                    <p ng-bind-html="card.note | tweetLinky:'_blank' | embed"></p>
+                                    <p ng-bind-html="card.note | tweetLinky:'_blank' | embed:{link:false}"></p>
                                     <form class="comment-your-control">
                                         <input type="text" name="comment" maxlength="140" placeholder="Jorge say something about your control">
                                     </form>
@@ -102,13 +106,15 @@
                         <div class="post" ng-repeat="control in controlsAPI" ng-show="!switchButton">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 ng-cloak>{{control.daytime | capitalize}} <span> {{ control.time | date:'HH:mm:ss'}} - {{ control.date | date:'dd MMMM yyyy'}}</span></h4>
+                                    <h4 ng-bind="control.name "> </h4> <span ng-bind=" control.time | date:' HH:mm:ss'"></span> <span ng-bind="control.date | date:' - dd MMMM yyyy'"></span>
                                 </div>
-                                <div class="graphic controls" ng-cloak>
-                                    {{control.glucose}}-{{control.type}}-{{control.insulin}}
-                                </div>
+                                <div class="graphic data-control" ng-bind="control.glucose"></div>
+                                <div class="graphic data-control" ng-bind="control.type | capitalize"></div>
+                                <div class="graphic data-control" ng-bind="control.insulin"></div>
+                                <div class="graphic data-control info">Glucose</div>
+                                <div class="graphic data-control info">Insulin</div>
                                 <div class="card-content">
-                                    <p ng-bind-html="control.note | tweetLinky:'_blank' | embed"></p>
+                                    <p ng-bind-html="control.note | tweetLinky:'_blank' | embed:{link:false}"></p>
                                     <form class="comment-your-control">
                                         <input type="text" name="comment" maxlength="140" placeholder="Jorge say something about your control">
                                     </form>

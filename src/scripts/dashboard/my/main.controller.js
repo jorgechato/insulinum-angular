@@ -1,7 +1,14 @@
 'use strict';
 
 angular.module('insulinum')
-.controller('mainController', function ($scope) {
+.controller('mainController', function ($scope,$http,$timeout) {
+
+    $http.get('assets/colors.json').success(function(data) {
+        $scope.colors = data;
+    });
+
+    // Chart.defaults.global.colours = $scope.colors;
+
     $scope.controlsAPI = [
         {
             'date' : new Date(),
@@ -81,7 +88,7 @@ angular.module('insulinum')
             'name':'Radar chart',
             'date' : new Date(),
             'time' : new Date(),
-            'note' : 'something that happen in this control is everything I whant #EverythingOK'
+            'note' : 'something that happen in :/ this control is everything I whant #EverythingOK'
         },
         {
             'id':'pie',
@@ -94,17 +101,25 @@ angular.module('insulinum')
     ];
 
 
-    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    // $timeout(function(){
+        $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    // }, 3000);
 
-    $scope.series = ['Insulinum', 'Glucose'];
+    // $timeout(function(){
+        $scope.series = ['Insulinum', 'Glucose'];
+    // }, 3000);
 
-    $scope.data = [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
-    ];
+    // $timeout(function(){
+        $scope.data = [
+            [65, 59, 80, 81, 56, 55, 40],
+            [28, 48, 40, 19, 86, 27, 90]
+        ];
+    // }, 3000);
 
-    $scope.onClick = function (points, evt) {
-        console.log(points, evt);
-    };
+    $timeout(function(){
+        $scope.onClick = function (points, evt) {
+            console.log(points, evt);
+        };
+    }, 3000);
 
 });

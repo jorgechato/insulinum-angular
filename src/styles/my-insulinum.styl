@@ -73,7 +73,7 @@
             font-weight: 400;
             letter-spacing: .029em;
             line-height: 16px;
-    div.controls, div.week
+    div.controls, div.week, div.day
         border-right: 2px solid #e4e4e4;
 
 .user-date
@@ -99,8 +99,27 @@
     position: relative;
     background-color: ibasewhite;
     border-radius: 4px;
-    .controls
+    .data-control
         padding: 0 15px;
+        display inline-block
+        vertical-align center
+        width 32.8%
+        font-size 2em
+        &:nth-child(2)
+            color iblue
+        &:nth-child(3)
+            text-align center
+            font-size 1.2em
+        &:nth-child(4)
+            text-align right
+    .info
+        font-size 1em
+        width 49.6%
+        &:nth-child(5)
+            text-align left
+            color iblue
+        &:nth-child(6)
+            text-align right
 
 .graphic
     position: relative;
@@ -117,10 +136,12 @@
 
 .card-header
     padding: 13px 10px;
-    h4
+    span
+        color ilightblue
+    h4,span
         font-weight: 600;
-        span
-            color ilightblue
+        display inline-block
+        vertical-align center
 
 .card-content
     padding: 0 15px 15px;
