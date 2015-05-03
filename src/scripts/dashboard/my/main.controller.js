@@ -7,38 +7,33 @@ angular.module('insulinum')
         $scope.colors = data;
     });
 
-    // Chart.defaults.global.colours = $scope.colors;
+    $http.get('http://localhost:5000/api/controls')
+        .success(function(data, status, headers, config) {
+            // this callback will be called asynchronously
+            // when the response is available
+            $scope.controlsAPI = data.controls;
 
-    $scope.controlsAPI = [
-        {
-            'date' : new Date(),
-            'time' : new Date(),
-            'glucose' : 140,
-            'insulin' : 12,
-            'type' : 'quickly',
-            'daytime' : 'breakfast',
-            'note' : 'something that happen in this control :smiley: is everything I whant #EverythingOK'
-        },
-        {
-            'date' : new Date(),
-            'time' : new Date(),
-            'glucose' : 130,
-            'insulin' : 9,
-            'type' : 'quickly',
-            'daytime' : 'breakfast',
-            'note' : 'something that happen in this control is everything I whant #EverythingOK'
-        },
-        {
-            'date' : new Date(),
-            'time' : new Date(),
-            'glucose' : 150,
-            'insulin' : 13,
-            'type' : 'quickly',
-            'daytime' : 'breakfast',
-            'note' : 'something that happen in this control is everything I whant #EverythingOK'
-        }
-    ];
-
+    // $http.post('http://localhost:5000/api/controls', {
+    //   "control" : {
+    //       "date" : new Date(),
+    //       "time" : new Date(),
+    //       "glucose" : "80",
+    //       "insulin" : "16",
+    //       "type" : "quickly",
+    //       "daytime" : "breakfast",
+    //       "note" : "something that happen in this control :smiley: is everything I want #EverythingOK"
+    //   }
+    // }).
+    //     success(function(data, status, headers, config) {
+    //     // this callback will be called asynchronously
+    //     // when the response is available
+    //         alert('done')
+    //     }).
+    //     error(function(data, status, headers, config) {
+    //     // called asynchronously if an error occurs
+    //     // or server returns response with an error status.
+    //         alert('bad')
+    //     });
     $scope.controlsLength = $scope.controlsAPI.length;
 
     function avg(){
@@ -54,6 +49,21 @@ angular.module('insulinum')
     $scope.avgWeek = avg();
 
     $scope.avgMonth = avg();
+})
+.error(function(data, status, headers, config) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+    alert('bad')
+});
+
+    $scope.labels = ["January", "February", "March", "April", "May", "June", "July","65"];
+
+    $scope.series = ['Insulinum', 'Glucose'];
+
+    $scope.data = [
+        [65, 59, 80, 81, 56, 55, 40,65],
+        [28, 48, 40, 19, 86, 27, 90,65]
+    ];
 
     $scope.switchButton = true;
 
@@ -99,22 +109,6 @@ angular.module('insulinum')
             'note' : 'something that happen in this control is everything I whant #EverythingOK'
         }
     ];
-
-
-    // $timeout(function(){
-        $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    // }, 3000);
-
-    // $timeout(function(){
-        $scope.series = ['Insulinum', 'Glucose'];
-    // }, 3000);
-
-    // $timeout(function(){
-        $scope.data = [
-            [65, 59, 80, 81, 56, 55, 40],
-            [28, 48, 40, 19, 86, 27, 90]
-        ];
-    // }, 3000);
 
     $timeout(function(){
         $scope.onClick = function (points, evt) {
