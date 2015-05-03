@@ -30,17 +30,26 @@
             <div class="nav-buttons ">
                 <span>
                     <a href="/" class="active">
-                        <button class="clear icon index">
+                        <button class="clear icon index fa fa-heartbeat home">
+                            <!-- <span class="fa fa-heartbeat home"></span> -->
                         </button>
                     </a>
                 </span>
                 <span>
                     <a href="/" class="">
-                        <button class="clear icon index">
+                        <button class="clear icon index fa fa-info bug">
+                            <!-- <span class="fa fa-info bug"></span> -->
                         </button>
                     </a>
                 </span>
             </div>
+            <span>
+                <a href="/" class="active">
+                    <button class="clear index name">
+                        <img src="../assets/img/logobeta.png" alt="" />
+                    </button>
+                </a>
+            </span>
         </header>
         <button class="get-app-button small ">
             Get the app
@@ -56,11 +65,12 @@
                     <div class="info">
                         <div class="icon" style="background-image:url('../assets/img/image.jpg')"></div>
                         <h2>Jorge Chato</h2>
+                        <h5>Controls <span ng-bind="controlsLength | number"></span></h5>
                         <div class="metrics">
-                            <div class="controls">
+                            <!-- <div class="controls">
                                 <div class="metrics-count" ng-bind="controlsLength | number"></div>
                                 <div class="metrics-name">Controls</div>
-                            </div>
+                            </div> -->
                             <div class="day">
                                 <div class="metrics-count" ng-bind="avgWeek"></div>
                                 <div class="metrics-name">AVG Day</div>
@@ -82,6 +92,7 @@
             </div>
 
             <div class="user-data">
+                <div class="padding"></div>
                 <div class="data">
                     <div class="data-center">
                         <div class="post" ng-repeat="card in chartCard" ng-show="switchButton">
@@ -96,6 +107,17 @@
                                     </canvas>
                                 </div>
                                 <div class="card-content">
+                                    <div class="actions">
+                                        <div class="post-swarm">
+                                            <div class="post-actions">
+                                                <button class="clear something">
+                                                    <span class="fa fa-eye"></span>
+                                                    <span>Save</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
                                     <p ng-bind-html="card.note | tweetLinky:'_blank' | embed:{link:false}"></p>
                                     <form class="comment-your-control">
                                         <input type="text" name="comment" maxlength="140" placeholder="Jorge say something about your control">
@@ -106,7 +128,7 @@
                         <div class="post" ng-repeat="control in controlsAPI" ng-show="!switchButton">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 ng-bind="control.name "> </h4> <span ng-bind=" control.time | date:' HH:mm:ss'"></span> <span ng-bind="control.date | date:' - dd MMMM yyyy'"></span>
+                                    <span ng-bind=" control.time | date:' HH:mm:ss'"></span> <span ng-bind="control.date | date:' - dd MMMM yyyy'"></span>
                                 </div>
                                 <div class="graphic data-control" ng-bind="control.glucose"></div>
                                 <div class="graphic data-control" ng-bind="control.type | capitalize"></div>
@@ -123,6 +145,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="padding"></div>
             </div>
         </div>
 

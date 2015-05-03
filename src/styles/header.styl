@@ -21,8 +21,19 @@ header.transparent .nav-buttons a.active .icon
     // filter: alpha(Opacity=100);
     color: #fff;
 
+header
+    .name
+        margin-right 1em
+        &:hover
+            background transparent
+            color maincolour
+        img
+            width 130px
+            padding-top 4px
+
 header .nav-buttons a.active .index
-    color: iblack;
+    .home
+        color igreen
 
 header.transparent .nav-buttons .icon
     color: #fff;
@@ -35,14 +46,22 @@ header .nav-buttons a.active button
 
 header .nav-buttons .icon
     margin-right: 20px;
-    opacity: .3;
+    // opacity: .3;
     // filter: alpha(Opacity=30);
     width: 20px;
     height: 40px;
     font-size: 20px;
     display: inline-block;
     vertical-align: middle;
-    color: #000;
+    color: rgba(iblack,.3);
+    &:hover
+        background-color transparent
+header
+    .nav-buttons
+        .home
+            color igreen
+        .bug:hover
+            color iyellow
 
 button.icon
     color: #fff;
