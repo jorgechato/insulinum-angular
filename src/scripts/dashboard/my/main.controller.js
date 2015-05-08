@@ -13,6 +13,16 @@ angular.module('insulinum')
             // when the response is available
             $scope.controlsAPI = data.controls;
 
+            // var total = 0;
+            // var curMonth = new Date().getMonth();
+            // angular.forEach(data.controls, function(obj){
+            //     var d = new Date(obj.date)
+            // var avg=[d.getMonth(),getWeek(),d.getYear()]
+            //     if(.avg[0] == curMonth)
+            //     total += obj.insulin;
+            // });
+            // console.log(total / data.controls.length);
+
     // $http.post('http://localhost:5000/api/controls', {
     //   "control" : {
     //       "date" : new Date(),
@@ -46,14 +56,14 @@ angular.module('insulinum')
         return total/$scope.controlsAPI.length;
     }
 
-    $scope.avgWeek = avg();
+    $scope.avgWeek = avg(1);
 
     $scope.avgMonth = avg();
 })
 .error(function(data, status, headers, config) {
     // called asynchronously if an error occurs
     // or server returns response with an error status.
-    alert('bad')
+    // alert('bad')
 });
 
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July","65"];
