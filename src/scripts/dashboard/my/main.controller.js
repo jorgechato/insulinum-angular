@@ -3,68 +3,47 @@
 angular.module('insulinum')
 .controller('mainController', function ($scope,$http,$timeout) {
 
+    $scope.controlsAPI = [];
+
     $http.get('assets/colors.json').success(function(data) {
         $scope.colors = data;
     });
 
-    $http.get('http://localhost:5000/api/controls')
-        .success(function(data, status, headers, config) {
-            // this callback will be called asynchronously
-            // when the response is available
-            $scope.controlsAPI = data.controls;
-
-            // var total = 0;
-            // var curMonth = new Date().getMonth();
-            // angular.forEach(data.controls, function(obj){
-            //     var d = new Date(obj.date)
-            // var avg=[d.getMonth(),getWeek(),d.getYear()]
-            //     if(.avg[0] == curMonth)
-            //     total += obj.insulin;
-            // });
-            // console.log(total / data.controls.length);
-
-    // $http.post('http://localhost:5000/api/controls', {
-    //   "control" : {
-    //       "date" : new Date(),
-    //       "time" : new Date(),
-    //       "glucose" : "80",
-    //       "insulin" : "16",
-    //       "type" : "quickly",
-    //       "daytime" : "breakfast",
-    //       "note" : "something that happen in this control :smiley: is everything I want #EverythingOK"
-    //   }
-    // }).
-    //     success(function(data, status, headers, config) {
-    //     // this callback will be called asynchronously
-    //     // when the response is available
-    //         alert('done')
-    //     }).
-    //     error(function(data, status, headers, config) {
-    //     // called asynchronously if an error occurs
-    //     // or server returns response with an error status.
-    //         alert('bad')
-    //     });
-    $scope.controlsLength = $scope.controlsAPI.length;
-
-    function avg(){
-        var total = 0;
-        angular.forEach($scope.controlsAPI, function(control) {
-            // if(control.date == )
-                total += control.glucose;
+    var retrieveItems = function () {
+        $http.get('http://localhost:5000/api/controls')
+            .success(function(data, status, headers, config) {
+                // this callback will be called asynchronously
+                // when the response is available
+                $scope.controlsAPI = data.controls;
+                $timeout(retrieveItems, 5000);
+            })
+            .error(function(data, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                // alert('bad')
         });
-
-        return total/$scope.controlsAPI.length;
     }
 
-    $scope.avgWeek = avg(1);
+    retrieveItems();
 
-    $scope.avgMonth = avg();
-})
-.error(function(data, status, headers, config) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    // alert('bad')
-});
+    $scope.$watch('controlsAPI', function() {
+
+        $scope.controlsLength = $scope.controlsAPI.length;
+
+        function avg(){
+            var total = 0;
+            angular.forEach($scope.controlsAPI, function(control) {
+                // if(control.date == )
+                    total += control.glucose;
+            });
+
+            return total/$scope.controlsAPI.length;
+        }
+
+        $scope.avgWeek = avg(1);
+
+        $scope.avgMonth = avg();
+   });
 
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July","65"];
 
