@@ -1,7 +1,7 @@
 <div id="outer-wrapper" class=""  ng-controller="mainController as main">
     <header class="" ng-include="'header.html'"></header>
 
-    <button class="get-app-button small ">
+    <button class="get-app-button small " id="pdf">
         Get the app
     </button>
     <button class="login-link small ">
@@ -60,7 +60,7 @@
                                 <div class="actions">
                                     <div class="post-swarm">
                                         <div class="post-actions">
-                                            <button class="clear something">
+                                            <button class="clear something" onclick="canvasToPdf('#line')">
                                                 <span class="fa fa-eye"></span>
                                                 <span>Save</span>
                                             </button>
@@ -91,7 +91,7 @@
                                 <div class="actions">
                                     <div class="post-swarm">
                                         <div class="post-actions">
-                                            <button class="clear something">
+                                            <button class="clear something" onclick="canvasToPdf('#bar')">
                                                 <span class="fa fa-eye"></span>
                                                 <span>Save</span>
                                             </button>
@@ -122,7 +122,7 @@
                                 <div class="actions">
                                     <div class="post-swarm">
                                         <div class="post-actions">
-                                            <button class="clear something">
+                                            <button class="clear something" onclick="canvasToPdf('#radar')">
                                                 <span class="fa fa-eye"></span>
                                                 <span>Save</span>
                                             </button>

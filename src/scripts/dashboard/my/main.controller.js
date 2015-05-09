@@ -5,6 +5,10 @@ angular.module('insulinum')
 
     $scope.controlsAPI = [];
 
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
     $http.get('assets/colors.json').success(function(data) {
         $scope.colors = data;
     });
@@ -15,7 +19,7 @@ angular.module('insulinum')
                 // this callback will be called asynchronously
                 // when the response is available
                 $scope.controlsAPI = data.controls;
-                $timeout(retrieveItems, 5000);
+                $timeout(retrieveItems, 50000);
             })
             .error(function(data, status, headers, config) {
                 // called asynchronously if an error occurs
@@ -26,7 +30,14 @@ angular.module('insulinum')
 
     retrieveItems();
 
+    var labelsChart = [],
+        insulinChart = [],
+        glucoseChart = [];
+
     $scope.$watch('controlsAPI', function() {
+        labelsChart = [];
+        insulinChart = [];
+        glucoseChart = [];
 
         $scope.controlsLength = $scope.controlsAPI.length;
 
@@ -43,16 +54,23 @@ angular.module('insulinum')
         $scope.avgWeek = avg(1);
 
         $scope.avgMonth = avg();
+
+        angular.forEach($scope.controlsAPI, function(control) {
+            // var dateChart = control.date.getMonth() + "/" + control.date.getDay()
+            labelsChart.push(monthNames[new Date(control.date).getMonth()] + " " + new Date(control.date).getUTCDate());
+            insulinChart.push(control.insulin);
+            glucoseChart.push(control.glucose);
+        });
+
+        $scope.labels = labelsChart;
+
+        $scope.data = [
+            insulinChart,
+            glucoseChart
+        ];
    });
 
-    $scope.labels = ["January", "February", "March", "April", "May", "June", "July","65"];
-
-    $scope.series = ['Insulinum', 'Glucose'];
-
-    $scope.data = [
-        [65, 59, 80, 81, 56, 55, 40,65],
-        [28, 48, 40, 19, 86, 27, 90,65]
-    ];
+    $scope.series = ['Insulin', 'Glucose'];
 
     $scope.switchButton = true;
 
