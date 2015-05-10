@@ -70,7 +70,39 @@ angular.module('insulinum')
         ];
    });
 
+   $scope.chartCard = [
+       {
+           'typeChart':'Line',
+           'name':'Linear chart',
+           'date' : new Date(),
+           'time' : new Date(),
+           'note' : 'something that happen <3 in this control is everything I want #EverythingOK'
+       },
+       {
+           'typeChart':'Bar',
+           'name':'Bar chart',
+           'date' : new Date(),
+           'time' : new Date(),
+           'note' : 'something that happen in :P this control is everything I want #EverythingOK'
+       },
+       {
+           'typeChart':'Radar',
+           'name':'Radar chart',
+           'date' : new Date(),
+           'time' : new Date(),
+           'note' : 'something that happen in :/ this control is everything I want #EverythingOK'
+       }
+   ];
+
     $scope.series = ['Insulin', 'Glucose'];
+
+    $scope.$watch('chartCard', function() {
+        $scope.type = [];
+
+        angular.forEach($scope.chartCard, function(types) {
+            $scope.type.push(types.typeChart);
+        });
+    });
 
     $scope.switchButton = true;
 
@@ -81,41 +113,6 @@ angular.module('insulinum')
     $scope.toggleCustom = function() {
         $scope.switchButton = $scope.switchButton === false ? true: false;
     };
-
-    $scope.chartCard = [
-        {
-            'id':'line',
-            'class':'chart-line',
-            'name':'Linear chart',
-            'date' : new Date(),
-            'time' : new Date(),
-            'note' : 'something that happen <3 in this control is everything I whant #EverythingOK'
-        },
-        {
-            'id':'bar',
-            'class':'chart-bar',
-            'name':'Bar chart',
-            'date' : new Date(),
-            'time' : new Date(),
-            'note' : 'something that happen in :P this control is everything I whant #EverythingOK'
-        },
-        {
-            'id':'radar',
-            'class':'chart-radar',
-            'name':'Radar chart',
-            'date' : new Date(),
-            'time' : new Date(),
-            'note' : 'something that happen in :/ this control is everything I whant #EverythingOK'
-        },
-        {
-            'id':'pie',
-            'class':'chart-pie',
-            'name':'Pie chart',
-            'date' : new Date(),
-            'time' : new Date(),
-            'note' : 'something that happen in this control is everything I whant #EverythingOK'
-        }
-    ];
 
     $timeout(function(){
         $scope.onClick = function (points, evt) {

@@ -40,21 +40,22 @@
             <div class="data-with"></div>
             <div class="padding"></div>
         </div>
-
+        <!-- charts -->
         <div class="user-data">
             <div class="padding"></div>
             <div class="data">
                 <div class="data-center">
-                    <div class="post" ng-show="switchButton">
+                    <div class="post" ng-show="switchButton" ng-repeat="card in chartCard">
                         <div class="card">
                             <div class="card-header">
-                                <h4 ng-bind="chartCard[0].name "> </h4> &nbsp<span ng-bind=" chartCard[0].time | date:' HH:mm:ss'"></span> <span ng-bind="chartCard[0].date | date:' - dd MMMM yyyy'"></span>
+                                <h4 ng-bind="card.name "> </h4> &nbsp<span ng-bind=" card.time | date:' HH:mm:ss'"></span> <span ng-bind="card.date | date:' - dd MMMM yyyy'"></span>
                             </div>
                             <div class="graphic">
-                                <canvas ng-cloak id="line" class="chart-line chart" data="data"
+                                <!-- <canvas ng-cloak id="base" class="chart-base" chart-type="Line" data="data"
                                   labels="labels" legend="true" series="series">
-                                </canvas>
-                                <!-- <canvas id="chart{{$index}}"></canvas> -->
+                                </canvas> -->
+                                <canvas id="base" class="chart-base" chart-type="type[$index]" data="data"
+                                labels="labels" legend="true" series="series"></canvas>
                             </div>
                             <div class="card-content">
                                 <div class="actions">
@@ -68,76 +69,14 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <p ng-bind-html="chartCard[0].note | tweetLinky:'_blank' | embed:{link:false}"></p>
+                                <p ng-bind-html="card.note | tweetLinky:'_blank' | embed:{link:false}"></p>
                                 <form class="comment-your-control">
                                     <input type="text" name="comment" maxlength="140" placeholder="Jorge say something about your control">
                                 </form>
                             </div>
                         </div>
                     </div>
-
-                    <div class="post" ng-show="switchButton">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 ng-bind="chartCard[1].name "> </h4> &nbsp<span ng-bind=" chartCard[1].time | date:' HH:mm:ss'"></span> <span ng-bind="chartCard[1].date | date:' - dd MMMM yyyy'"></span>
-                            </div>
-                            <div class="graphic">
-                                <canvas ng-cloak id="bar" class="chart-bar chart" data="data"
-                                  labels="labels" legend="true" series="series">
-                                </canvas>
-                                <!-- <canvas id="chart{{$index}}"></canvas> -->
-                            </div>
-                            <div class="card-content">
-                                <div class="actions">
-                                    <div class="post-swarm">
-                                        <div class="post-actions">
-                                            <button class="clear something" onclick="canvasToPdf('#bar')">
-                                                <span class="fa fa-eye"></span>
-                                                <span>Save</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <p ng-bind-html="chartCard[1].note | tweetLinky:'_blank' | embed:{link:false}"></p>
-                                <form class="comment-your-control">
-                                    <input type="text" name="comment" maxlength="140" placeholder="Jorge say something about your control">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="post" ng-show="switchButton">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 ng-bind="chartCard[2].name "> </h4> &nbsp<span ng-bind=" chartCard[2].time | date:' HH:mm:ss'"></span> <span ng-bind="chartCard[2].date | date:' - dd MMMM yyyy'"></span>
-                            </div>
-                            <div class="graphic">
-                                <canvas ng-cloak id="radar" class="chart-radar chart" data="data"
-                                  labels="labels" legend="true" series="series">
-                                </canvas>
-                                <!-- <canvas id="chart{{$index}}"></canvas> -->
-                            </div>
-                            <div class="card-content">
-                                <div class="actions">
-                                    <div class="post-swarm">
-                                        <div class="post-actions">
-                                            <button class="clear something" onclick="canvasToPdf('#radar')">
-                                                <span class="fa fa-eye"></span>
-                                                <span>Save</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <p ng-bind-html="chartCard[2].note | tweetLinky:'_blank' | embed:{link:false}"></p>
-                                <form class="comment-your-control">
-                                    <input type="text" name="comment" maxlength="140" placeholder="Jorge say something about your control">
-                                </form>
-                            </div>
-                        </div>
-
-                    </div>
+                    <!-- controls -->
                     <div class="post" ng-repeat="control in controlsAPI" ng-show="!switchButton">
                         <div class="card">
                             <div class="card-header">
