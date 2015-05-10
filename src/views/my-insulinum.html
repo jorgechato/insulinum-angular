@@ -54,14 +54,14 @@
                                 <!-- <canvas ng-cloak id="base" class="chart-base" chart-type="Line" data="data"
                                   labels="labels" legend="true" series="series">
                                 </canvas> -->
-                                <canvas id="base" class="chart-base" chart-type="type[$index]" data="data"
+                                <canvas id="{{card.typeChart}}" class="chart-base" chart-type="type[$index]" data="data"
                                 labels="labels" legend="true" series="series"></canvas>
                             </div>
                             <div class="card-content">
                                 <div class="actions">
                                     <div class="post-swarm">
                                         <div class="post-actions">
-                                            <button class="clear something" onclick="canvasToPdf('#line')">
+                                            <button class="clear something" value="{{card.typeChart}}" onclick="canvasToPdf(this)">
                                                 <span class="fa fa-eye"></span>
                                                 <span>Save</span>
                                             </button>
